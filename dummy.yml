@@ -1,5 +1,5 @@
 - name: Dummy Plugin
-  hosts: all
+  hosts: localhost
   gather_facts: false
 
   tasks:
