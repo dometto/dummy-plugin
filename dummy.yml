@@ -6,3 +6,14 @@
     - name: Wait for system to become reachable
       wait_for_connection:
         timeout: 300
+    - name: Create /pkgs
+      file:
+        dest: /pkgs
+        state: directory
+        mode: 0755
+    - name: Download example .deb
+      get_url:
+        dest: /pkgs
+        mode: 0755
+        url: https://dlcdn.apache.org//directory/apacheds/dist/2.0.0.AM27/apacheds-2.0.0.AM27-amd64.deb
+
