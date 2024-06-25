@@ -1,6 +1,13 @@
 - name: Dummy Plugin
   hosts: localhost
   gather_facts: false
+  vars:
+    minio_server:
+      - name: server1
+        password: xyz
+      - name: server2
+        password: abc
+    wanted: server1
 
   tasks:
     - name: Try updating apt
@@ -15,3 +22,9 @@
     - name: Get all packages as facts
       package_facts:
         manager: auto
+
+    - name: Debug
+      debug:
+        msg: '{{ minio_server
+            | json_query("[? name==`" + wanted + "`].password | [0]") 
+            }}'
