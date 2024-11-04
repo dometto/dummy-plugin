@@ -3,6 +3,6 @@
   gather_facts: false
 
   tasks:
-    - name: Wait for system to become reachable
-      wait_for_connection:
-        timeout: 300
+    - name: Debug
+      debug:
+        msg: "{{ foo }}"
